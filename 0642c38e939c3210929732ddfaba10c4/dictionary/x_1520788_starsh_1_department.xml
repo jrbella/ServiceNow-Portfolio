@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="93d58bc293dc3210929732ddfaba108b" label="Department" max_length="40" name="x_1520788_starsh_1_department" type="collection">
+        <element label="Department Name" mandatory="true" max_length="40" name="department_name" type="string"/>
+        <element label="Budget Allocated" max_length="40" name="budget_allocated" type="currency"/>
+        <element label="Parent Department" max_length="32" name="parent_department" reference="x_1520788_starsh_1_department" type="reference"/>
+        <element label="Description" max_length="4000" name="description" type="string"/>
+        <element label="Department Head" max_length="32" name="department_head" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element label="Budget Spent" max_length="40" name="budget_spent" type="currency"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="planning" sequence="0" value="planning"/>
+                <element inactive_on_update="false" label="active" sequence="1" value="active"/>
+                <element inactive_on_update="false" label="on_hold" sequence="2" value="on_hold"/>
+                <element inactive_on_update="false" label="closed" sequence="3" value="closed"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="department_head"/>
+        </index>
+        <index name="index2">
+            <element name="parent_department"/>
+        </index>
+    </element>
+</database>

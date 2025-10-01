@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="agent_type" table="x_1520788_starsh_1_ai_agent" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>agent_type</element>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>agent_type</sys_name>
+            <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+            <sys_update_name>sys_choice_x_1520788_starsh_1_ai_agent_agent_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CEO - Chief Executive Officer</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>ceo_chief_executive_officer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CFO - Chief Financial Officer</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>cfo_chief_financial_officer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>CTO - Chief Technology Officer</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>cto_chief_technology_officer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>COO - Chief Operating Officer</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>coo_chief_operating_officer</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Engineering - Propulsion</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>engineering_propulsion</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Engineering - Structural</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>engineering_structural</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>agent_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Engineering - Life Support (etc.)</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_ai_agent</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 22:39:31</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 22:39:31</sys_updated_on>
+            <value>engineering_life_support_etc</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

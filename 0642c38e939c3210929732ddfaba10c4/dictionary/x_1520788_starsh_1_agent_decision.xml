@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="75f90b4a93dc3210929732ddfaba104d" label="Agent Decision" max_length="40" name="x_1520788_starsh_1_agent_decision" type="collection">
+        <element choice="1" label="Approval Status" mandatory="true" max_length="40" name="approval_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Approved" sequence="1" value="approved"/>
+                <element inactive_on_update="false" label="Rejected" sequence="2" value="rejected"/>
+                <element inactive_on_update="false" label="Escalated" sequence="3" value="escalated"/>
+                <element inactive_on_update="false" label="Implemented" sequence="4" value="implemented"/>
+            </choice>
+        </element>
+        <element label="Cost Impact" max_length="40" name="cost_impact" type="currency"/>
+        <element label="Decision Title" mandatory="true" max_length="200" name="decision_title" type="string"/>
+        <element choice="1" label="Risk Level" max_length="40" name="risk_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Medium" sequence="1" value="medium"/>
+                <element inactive_on_update="false" label="Low" sequence="0" value="low"/>
+                <element inactive_on_update="false" label="High" sequence="2" value="high"/>
+                <element inactive_on_update="false" label="Critical" sequence="3" value="critical"/>
+            </choice>
+        </element>
+        <element choice="1" label="Decision Type" mandatory="true" max_length="40" name="decision_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Technical" sequence="2" value="technical"/>
+                <element inactive_on_update="false" label="Financial" sequence="3" value="financial"/>
+                <element inactive_on_update="false" label="Resource" sequence="4" value="resource"/>
+                <element inactive_on_update="false" label="Operational" sequence="1" value="operational"/>
+                <element inactive_on_update="false" label="Strategic" sequence="0" value="strategic"/>
+            </choice>
+        </element>
+        <element label="Approved By" max_length="32" name="approved_by" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element choice="1" label="Escalation Level" mandatory="true" max_length="40" name="escalation_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Level 4 - Strategic (CEO" sequence="3" value="level_4_strategic_ceo"/>
+                <element inactive_on_update="false" label="Level 3 - Cross-Functional (COO/CTO)" sequence="2" value="level_3_cross_functional_coo_cto"/>
+                <element inactive_on_update="false" label="Level 5 - Existential (Human Override)" sequence="4" value="level_5_existential_human_override"/>
+                <element inactive_on_update="false" label="Level 1 - Routine (Agent Autonomous)" sequence="0" value="level_1_routine_agent_autonomous"/>
+                <element inactive_on_update="false" label="Level 2 - Departmental" sequence="1" value="level_2_departmental"/>
+            </choice>
+        </element>
+        <element label="Alternatives Considered" max_length="40" name="alternatives_considered" type="html"/>
+        <element label="Timeline Impact" max_length="40" name="timeline_impact" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Agent" mandatory="true" max_length="32" name="agent" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element label="Impact Assessment" max_length="40" name="impact_assessment" type="html"/>
+        <element label="Reasoning" max_length="40" name="reasoning" type="html"/>
+        <element label="Decision Description" max_length="40" name="decision_description" type="html"/>
+        <index name="index">
+            <element name="agent"/>
+        </index>
+        <index name="index2">
+            <element name="approved_by"/>
+        </index>
+    </element>
+</database>

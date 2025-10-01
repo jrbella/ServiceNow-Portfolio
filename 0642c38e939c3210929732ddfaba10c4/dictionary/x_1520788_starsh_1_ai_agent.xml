@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="2db203ce939c3210929732ddfaba1050" label="AI Agent" max_length="40" name="x_1520788_starsh_1_ai_agent" type="collection">
+        <element label="Department" max_length="32" name="department" reference="x_1520788_starsh_1_department" type="reference"/>
+        <element label="Description" max_length="40" name="description" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Agent Name" mandatory="true" max_length="100" name="agent_name" type="string"/>
+        <element label="Parent Agent" max_length="32" name="parent_agent" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="maintenance" sequence="4" value="maintenance"/>
+                <element inactive_on_update="false" label="planned" sequence="0" value="planned"/>
+                <element inactive_on_update="false" label="development" sequence="1" value="development"/>
+                <element inactive_on_update="false" label="failed" sequence="5" value="failed"/>
+                <element inactive_on_update="false" label="testing" sequence="2" value="testing"/>
+                <element inactive_on_update="false" label="retired" sequence="6" value="retired"/>
+                <element inactive_on_update="false" label="active" sequence="3" value="active"/>
+            </choice>
+        </element>
+        <element label="API Endpoint" max_length="1024" name="api_endpoint" type="url"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Agent Type" mandatory="true" max_length="40" name="agent_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="CFO - Chief Financial Officer" sequence="1" value="cfo_chief_financial_officer"/>
+                <element inactive_on_update="false" label="Engineering - Structural" sequence="5" value="engineering_structural"/>
+                <element inactive_on_update="false" label="Engineering - Life Support (etc.)" sequence="6" value="engineering_life_support_etc"/>
+                <element inactive_on_update="false" label="CEO - Chief Executive Officer" sequence="0" value="ceo_chief_executive_officer"/>
+                <element inactive_on_update="false" label="CTO - Chief Technology Officer" sequence="2" value="cto_chief_technology_officer"/>
+                <element inactive_on_update="false" label="COO - Chief Operating Officer" sequence="3" value="coo_chief_operating_officer"/>
+                <element inactive_on_update="false" label="Engineering - Propulsion" sequence="4" value="engineering_propulsion"/>
+            </choice>
+        </element>
+        <element label="Last Heartbeat" max_length="40" name="last_heartbeat" type="glide_date_time"/>
+        <element label="Model Type" max_length="100" name="model_type" type="string"/>
+        <index name="index">
+            <element name="department"/>
+        </index>
+        <index name="index2">
+            <element name="parent_agent"/>
+        </index>
+        <index name="index3">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>
