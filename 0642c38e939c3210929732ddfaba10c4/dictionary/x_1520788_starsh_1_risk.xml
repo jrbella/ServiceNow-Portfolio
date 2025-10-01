@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e1ccc74e93dc3210929732ddfaba10fd" label="Risk" max_length="40" name="x_1520788_starsh_1_risk" type="collection">
+        <element choice="1" label="Category" max_length="40" name="category" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Regulatory" sequence="2" value="regulatory"/>
+                <element inactive_on_update="false" label="Operational" sequence="3" value="operational"/>
+                <element inactive_on_update="false" label="Supply Chain" sequence="4" value="supply_chain"/>
+                <element inactive_on_update="false" label="Financial" sequence="1" value="financial"/>
+                <element inactive_on_update="false" label="Safety" sequence="5" value="safety"/>
+                <element inactive_on_update="false" label="Technical" sequence="0" value="technical"/>
+            </choice>
+        </element>
+        <element label="Risk Title" mandatory="true" max_length="200" name="risk_title" type="string"/>
+        <element label="Probability" max_length="40" name="probability" type="integer"/>
+        <element label="Risk Score" max_length="40" name="risk_score" type="integer"/>
+        <element label="Identified By" max_length="32" name="identified_by" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element label="Description" max_length="40" name="description" type="html"/>
+        <element label="Impact" max_length="40" name="impact" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Mitigation Strategy" max_length="40" name="mitigation_strategy" type="html"/>
+        <element label="Owner Agent" max_length="32" name="owner_agent" reference="x_1520788_starsh_1_ai_agent" type="reference"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Monitoring" sequence="3" value="monitoring"/>
+                <element inactive_on_update="false" label="Closed" sequence="4" value="closed"/>
+                <element inactive_on_update="false" label="Analyzing" sequence="1" value="analyzing"/>
+                <element inactive_on_update="false" label="Identified" sequence="0" value="identified"/>
+                <element inactive_on_update="false" label="Mitigating" sequence="2" value="mitigating"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="identified_by"/>
+        </index>
+        <index name="index2">
+            <element name="owner_agent"/>
+        </index>
+    </element>
+</database>

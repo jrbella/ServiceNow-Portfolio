@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="decision_type" label="Decision Type" language="en" table="x_1520788_starsh_1_agent_decision">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>decision_type</element>
+            <help/>
+            <hint/>
+            <label>Decision Type</label>
+            <language>en</language>
+            <name>x_1520788_starsh_1_agent_decision</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-10-01 23:18:05</sys_created_on>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Decision Type</sys_name>
+            <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+            <sys_update_name>sys_documentation_x_1520788_starsh_1_agent_decision_decision_type_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-10-01 23:18:10</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
