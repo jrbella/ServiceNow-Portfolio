@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>GET</http_method>
+        <name>Get Agent Tasks</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+    var agentId = request.pathParams.agent_id;
+    var status = request.queryParams.status || 'open'; // Default to open tasks
+    
+    try {
+        // Verify agent exists
+        var agentGr = new GlideRecord('x_1520788_starsh_1_agent');
+        if (!agentGr.get(agentId)) {
+            response.setStatus(404);
+            response.setBody({
+                error: "Agent not found",
+                agent_id: agentId
+            });
+            return;
+        }
+        
+        // Query tasks assigned to this agent
+        var taskGr = new GlideRecord('x_1520788_starsh_1_task');
+        taskGr.addQuery('assigned_agent', agentId);
+        
+        // Filter by status if provided
+        if (status === 'open') {
+            taskGr.addQuery('state', 'IN', '1,2'); // Open or Work in Progress
+        } else {
+            taskGr.addQuery('state', status);
+        }
+        
+        taskGr.orderBy('priority');
+        taskGr.orderByDesc('sys_created_on');
+        taskGr.query();
+        
+        var tasks = [];
+        
+        while (taskGr.next()) {
+            tasks.push({
+                sys_id: taskGr.getUniqueValue(),
+                number: taskGr.getValue('number'),
+                short_description: taskGr.getValue('short_description'),
+                description: taskGr.getValue('description'),
+                priority: taskGr.getValue('priority'),
+                state: taskGr.getValue('state'),
+                task_complexity: taskGr.getValue('task_complexity'),
+                due_date: taskGr.getValue('due_date'),
+                technical_specifications: taskGr.getValue('technical_specifications'),
+                success_criteria: taskGr.getValue('success_criteria'),
+                related_design: taskGr.getValue('related_design')
+            });
+        }
+        
+        response.setStatus(200);
+        response.setBody({
+            agent_id: agentId,
+            agent_name: agentGr.getValue('agent_name'),
+            task_count: tasks.length,
+            tasks: tasks
+        });
+        
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({
+            error: "Internal server error",
+            message: ex.message
+        });
+    }
+    
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1520788_starsh_1/starship_agent_api/agents/{agent_id}/tasks</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/agents/{agent_id}/tasks</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:18:01</sys_created_on>
+        <sys_id>79d7e74693907210929732ddfaba1041</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Get Agent Tasks</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ws_operation_79d7e74693907210929732ddfaba1041</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:18:08</sys_updated_on>
+        <web_service_definition display_value="Starship Agent API">4a676f0693907210929732ddfaba1051</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

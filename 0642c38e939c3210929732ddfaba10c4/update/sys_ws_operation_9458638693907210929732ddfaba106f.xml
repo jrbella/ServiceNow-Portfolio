@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>PUT</http_method>
+        <name>Update Task Status</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+    var taskId = request.pathParams.task_id;
+    var requestBody = request.body.data;
+    
+    try {
+        // Find the task
+        var taskGr = new GlideRecord('x_1520788_starsh_1_task');
+        if (!taskGr.get(taskId)) {
+            response.setStatus(404);
+            response.setBody({
+                error: "Task not found",
+                task_id: taskId
+            });
+            return;
+        }
+        
+        // Update task fields
+        if (requestBody.state) {
+            taskGr.setValue('state', requestBody.state);
+        }
+        
+        if (requestBody.work_notes) {
+            taskGr.setValue('work_notes', requestBody.work_notes);
+        }
+        
+        if (requestBody.percent_complete) {
+            taskGr.setValue('percent_complete', requestBody.percent_complete);
+        }
+        
+        if (requestBody.close_notes && requestBody.state === '3') { // State 3 = Closed
+            taskGr.setValue('close_notes', requestBody.close_notes);
+        }
+        
+        taskGr.update();
+        
+        response.setStatus(200);
+        response.setBody({
+            message: "Task updated successfully",
+            task_id: taskId,
+            task_number: taskGr.getValue('number'),
+            state: taskGr.getValue('state'),
+            percent_complete: taskGr.getValue('percent_complete')
+        });
+        
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({
+            error: "Internal server error",
+            message: ex.message
+        });
+    }
+    
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1520788_starsh_1/starship_agent_api/tasks/{task_id}</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/tasks/{task_id}</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:20:15</sys_created_on>
+        <sys_id>9458638693907210929732ddfaba106f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Update Task Status</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ws_operation_9458638693907210929732ddfaba106f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:20:15</sys_updated_on>
+        <web_service_definition display_value="Starship Agent API">4a676f0693907210929732ddfaba1051</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

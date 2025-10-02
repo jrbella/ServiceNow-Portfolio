@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>Submit Decision</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+    var requestBody = request.body.data;
+    
+    try {
+        // Validate required fields
+        if (!requestBody.agent_id || !requestBody.decision_title || !requestBody.decision_type) {
+            response.setStatus(400);
+            response.setBody({
+                error: "Missing required fields",
+                required: ["agent_id", "decision_title", "decision_type"]
+            });
+            return;
+        }
+        
+        // Verify agent exists
+        var agentGr = new GlideRecord('x_1520788_starsh_1_agent');
+        if (!agentGr.get(requestBody.agent_id)) {
+            response.setStatus(404);
+            response.setBody({
+                error: "Agent not found",
+                agent_id: requestBody.agent_id
+            });
+            return;
+        }
+        
+        // Create decision record
+        var decisionGr = new GlideRecord('x_1520788_starsh_1_decision');
+        decisionGr.initialize();
+        
+        decisionGr.setValue('agent', requestBody.agent_id);
+        decisionGr.setValue('decision_type', requestBody.decision_type);
+        decisionGr.setValue('decision_title', requestBody.decision_title);
+        decisionGr.setValue('decision_description', requestBody.decision_description || '');
+        decisionGr.setValue('reasoning', requestBody.reasoning || '');
+        decisionGr.setValue('alternatives_considered', requestBody.alternatives_considered || '');
+        decisionGr.setValue('impact_assessment', requestBody.impact_assessment || '');
+        decisionGr.setValue('escalation_level', requestBody.escalation_level || '1');
+        decisionGr.setValue('cost_impact', requestBody.cost_impact || 0);
+        decisionGr.setValue('timeline_impact', requestBody.timeline_impact || 0);
+        decisionGr.setValue('risk_level', requestBody.risk_level || 'low');
+        decisionGr.setValue('approval_status', 'pending');
+        
+        var decisionSysId = decisionGr.insert();
+        
+        // Determine approval routing based on escalation level
+        var escalationLevel = requestBody.escalation_level || '1';
+        var approvalMessage = "";
+        
+        if (escalationLevel === '1') {
+            approvalMessage = "Level 1 decision - Agent autonomous, no approval needed";
+        } else if (escalationLevel === '2') {
+            approvalMessage = "Level 2 decision - Routed to Department Head";
+        } else if (escalationLevel === '3') {
+            approvalMessage = "Level 3 decision - Routed to COO/CTO";
+        } else if (escalationLevel === '4') {
+            approvalMessage = "Level 4 decision - Routed to CEO";
+        } else if (escalationLevel === '5') {
+            approvalMessage = "Level 5 decision - CRITICAL - Human override required";
+        }
+        
+        response.setStatus(201);
+        response.setBody({
+            message: "Decision submitted successfully",
+            decision_id: decisionSysId,
+            decision_number: decisionGr.getValue('number'),
+            approval_status: decisionGr.getValue('approval_status'),
+            escalation_level: escalationLevel,
+            routing: approvalMessage,
+            submitted_by: agentGr.getValue('agent_name')
+        });
+        
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({
+            error: "Internal server error",
+            message: ex.message
+        });
+    }
+    
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1520788_starsh_1/starship_agent_api/decisions</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/decisions</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:19:13</sys_created_on>
+        <sys_id>e0186f4693907210929732ddfaba1036</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Submit Decision</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ws_operation_e0186f4693907210929732ddfaba1036</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:19:13</sys_updated_on>
+        <web_service_definition display_value="Starship Agent API">4a676f0693907210929732ddfaba1051</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>PUT</http_method>
+        <name>Agent Heartbeat</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+    // Get agent_id from path parameter
+    var agentId = request.pathParams.agent_id;
+    
+    // Get data from request body
+    var requestBody = request.body.data;
+    
+    try {
+        // Find the agent
+        var agentGr = new GlideRecord('x_1520788_starsh_1_agent');
+        if (!agentGr.get(agentId)) {
+            response.setStatus(404);
+            response.setBody({
+                error: "Agent not found",
+                agent_id: agentId
+            });
+            return;
+        }
+        
+        // Update agent heartbeat and status
+        agentGr.setValue('last_heartbeat', new GlideDateTime());
+        agentGr.setValue('status', 'active');
+        
+        // Update performance score if provided
+        if (requestBody.performance_score) {
+            agentGr.setValue('performance_score', requestBody.performance_score);
+        }
+        
+        agentGr.update();
+        
+        // Return success
+        response.setStatus(200);
+        response.setBody({
+            message: "Heartbeat recorded",
+            agent_id: agentId,
+            agent_name: agentGr.getValue('agent_name'),
+            timestamp: new GlideDateTime().getDisplayValue()
+        });
+        
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({
+            error: "Internal server error",
+            message: ex.message
+        });
+    }
+    
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1520788_starsh_1/starship_agent_api/agents/{agent_id}/heartbeat</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/agents/{agent_id}/heartbeat</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:17:13</sys_created_on>
+        <sys_id>9997afc293907210929732ddfaba1076</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Agent Heartbeat</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ws_operation_9997afc293907210929732ddfaba1076</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:17:13</sys_updated_on>
+        <web_service_definition display_value="Starship Agent API">4a676f0693907210929732ddfaba1051</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

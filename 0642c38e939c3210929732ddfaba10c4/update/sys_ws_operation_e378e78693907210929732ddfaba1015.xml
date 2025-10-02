@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>GET</http_method>
+        <name>Query Resources</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    
+    var resourceType = request.queryParams.resource_type;
+    var departmentId = request.queryParams.department_id;
+    
+    try {
+        // Query resources
+        var resourceGr = new GlideRecord('x_1520788_starsh_1_resource');
+        
+        if (resourceType) {
+            resourceGr.addQuery('resource_type', resourceType);
+        }
+        
+        if (departmentId) {
+            resourceGr.addQuery('allocated_to_department', departmentId);
+        }
+        
+        resourceGr.orderBy('resource_name');
+        resourceGr.query();
+        
+        var resources = [];
+        
+        while (resourceGr.next()) {
+            var available = parseFloat(resourceGr.getValue('quantity_available') || 0);
+            var minStock = parseFloat(resourceGr.getValue('minimum_stock_level') || 0);
+            var needsReorder = available < minStock;
+            
+            resources.push({
+                sys_id: resourceGr.getUniqueValue(),
+                resource_name: resourceGr.getValue('resource_name'),
+                resource_type: resourceGr.getValue('resource_type'),
+                quantity_available: available,
+                unit_of_measure: resourceGr.getValue('unit_of_measure'),
+                cost_per_unit: resourceGr.getValue('cost_per_unit'),
+                minimum_stock_level: minStock,
+                needs_reorder: needsReorder,
+                supplier: resourceGr.getValue('supplier'),
+                lead_time_days: resourceGr.getValue('lead_time_days')
+            });
+        }
+        
+        response.setStatus(200);
+        response.setBody({
+            resource_count: resources.length,
+            resources: resources
+        });
+        
+    } catch (ex) {
+        response.setStatus(500);
+        response.setBody({
+            error: "Internal server error",
+            message: ex.message
+        });
+    }
+    
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_1520788_starsh_1/starship_agent_api/resources</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/resources</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:20:54</sys_created_on>
+        <sys_id>e378e78693907210929732ddfaba1015</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Query Resources</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ws_operation_e378e78693907210929732ddfaba1015</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:20:54</sys_updated_on>
+        <web_service_definition display_value="Starship Agent API">4a676f0693907210929732ddfaba1051</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
