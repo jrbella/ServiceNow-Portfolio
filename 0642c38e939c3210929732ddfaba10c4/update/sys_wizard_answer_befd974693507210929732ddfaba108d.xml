@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>New Agent Task</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Agent Task</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">b291d46b9820221055904c91e2b65451</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 00:34:32</sys_created_on>
+        <sys_id>befd974693507210929732ddfaba108d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Agent Task</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_wizard_answer_befd974693507210929732ddfaba108d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 00:34:32</sys_updated_on>
+        <table/>
+        <target_url>x_1520788_starsh_1_agent_task.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>

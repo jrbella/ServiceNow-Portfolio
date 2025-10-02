@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="743b174293507210929732ddfaba10ba" label="Design" max_length="40" name="x_1520788_starsh_1_design" type="collection">
+        <element label="Design Name" mandatory="true" max_length="200" name="design_name" type="string"/>
+        <element label="Version" max_length="20" name="version" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Component Type" mandatory="true" max_length="40" name="component_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Life Support System" sequence="2" value="life_support_system"/>
+                <element inactive_on_update="false" label="Interior Systems" sequence="6" value="interior_systems"/>
+                <element inactive_on_update="false" label="Avionics" sequence="3" value="avionics"/>
+                <element inactive_on_update="false" label="Power System" sequence="4" value="power_system"/>
+                <element inactive_on_update="false" label="Propulsion System" sequence="0" value="propulsion_system"/>
+                <element inactive_on_update="false" label="Structural Component" sequence="1" value="structural_component"/>
+                <element inactive_on_update="false" label="Hull/Armor" sequence="5" value="hull_armor"/>
+            </choice>
+        </element>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="In Production" sequence="3" value="in_production"/>
+                <element inactive_on_update="false" label="Deprecated" sequence="4" value="deprecated"/>
+                <element inactive_on_update="false" label="In Review" sequence="1" value="in_review"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+                <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
+            </choice>
+        </element>
+    </element>
+</database>

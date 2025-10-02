@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="71ae830293107210929732ddfaba1070" label="Resource" max_length="40" name="x_1520788_starsh_1_resource" type="collection">
         <element label="Unit of Measurement" max_length="50" name="unit_of_measurement" type="string"/>
-        <element label="Supplier" max_length="40" name="supplier" type="string"/>
+        <element label="Supplier" max_length="32" name="supplier" reference="x_1520788_starsh_1_supplier" type="reference"/>
         <element choice="1" label="Resource Type" mandatory="true" max_length="40" name="resource_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Material - Composite" sequence="2" value="material_composite"/>
