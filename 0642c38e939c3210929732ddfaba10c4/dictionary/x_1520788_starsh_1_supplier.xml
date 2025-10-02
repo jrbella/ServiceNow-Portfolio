@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="1945174a93107210929732ddfaba10e7" label="Supplier" max_length="40" name="x_1520788_starsh_1_supplier" type="collection">
+        <element label="Payment Terms" max_length="200" name="payment_terms" type="string"/>
+        <element label="Capabilities" max_length="4000" name="capabilities" type="string"/>
+        <element label="Reliability Sore" max_length="40" name="reliability_sore" type="integer"/>
+        <element label="Lead Time Days" max_length="40" name="lead_time_days" type="integer"/>
+        <element label="Contact Phone" max_length="40" name="contact_phone" type="phone_number_e164"/>
+        <element label="Supplier Name" mandatory="true" max_length="200" name="supplier_name" type="string"/>
+        <element label="Quality Rating" max_length="40" name="quality_rating" type="integer"/>
+        <element choice="1" label="Supplier Type" max_length="40" name="supplier_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Compoents Supplier" sequence="1" value="compoents_supplier"/>
+                <element inactive_on_update="false" label="Material Manufacturer" sequence="0" value="material_manufacturer"/>
+                <element inactive_on_update="false" label="Equipment Manufacturer" sequence="2" value="equipment_manufacturer"/>
+                <element inactive_on_update="false" label="Service Provider" sequence="3" value="service_provider"/>
+                <element inactive_on_update="false" label="Technology Partner" sequence="4" value="technology_partner"/>
+            </choice>
+        </element>
+        <element label="Contact Email" max_length="40" name="contact_email" type="string"/>
+    </element>
+</database>
