@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_application">
+    <sys_ui_application action="DELETE">
+        <active>true</active>
+        <hint/>
+        <name>Starship Command Center</name>
+        <order>100</order>
+        <roles/>
+        <sys_class_name>sys_ui_application</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:43:04</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ee9d6bca93907210929732ddfaba103d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Starship Command Center</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_update_name>sys_ui_application_ee9d6bca93907210929732ddfaba103d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:43:04</sys_updated_on>
+    </sys_ui_application>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</application>
+        <file_path/>
+        <instance_id>1cf33d043ba86614baf6048aa4e45afa</instance_id>
+        <instance_name>dev306919</instance_name>
+        <name>sys_ui_application_ee9d6bca93907210929732ddfaba103d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_application"><sys_ui_application action="INSERT_OR_UPDATE"><active>true</active><hint/><name>Starship Command Center</name><order>100</order><roles/><sys_class_name>sys_ui_application</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-10-02 01:43:04</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>ee9d6bca93907210929732ddfaba103d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Starship Command Center</sys_name><sys_overrides/><sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package><sys_policy/><sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope><sys_update_name>sys_ui_application_ee9d6bca93907210929732ddfaba103d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-10-02 01:43:04</sys_updated_on></sys_ui_application></record_update>]]></payload>
+        <payload_hash>-455863808</payload_hash>
+        <record_name>Starship Command Center</record_name>
+        <reverted_from/>
+        <source>88f45f0a93107210929732ddfaba10ff</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-02 01:43:04</sys_created_on>
+        <sys_id>faada74e93907210929732ddfaba1089</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>199a29652dd0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-02 01:43:04</sys_updated_on>
+        <type>Application Menu</type>
+        <update_guid>72ada74e699072108897be7e93f41089</update_guid>
+        <update_guid_history>72ada74e699072108897be7e93f41089:-455863808</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-10-09 17:05:57</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_application">sys_ui_application</sys_db_object>
+        <sys_id>6c9bf206dd9443a99aab064cc3fad051</sys_id>
+        <sys_metadata>ee9d6bca93907210929732ddfaba103d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Starship Command Center</sys_name>
+        <sys_package display_value="Starship Command Center" source="x_1520788_starsh_1">0642c38e939c3210929732ddfaba10c4</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Starship Command Center">0642c38e939c3210929732ddfaba10c4</sys_scope>
+        <sys_scope_delete display_value="">4a02d89a90254c0c84359f53fe028421</sys_scope_delete>
+        <sys_update_name>sys_ui_application_ee9d6bca93907210929732ddfaba103d</sys_update_name>
+        <sys_update_version display_value="sys_ui_application_ee9d6bca93907210929732ddfaba103d">faada74e93907210929732ddfaba1089</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-10-09 17:05:57</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
